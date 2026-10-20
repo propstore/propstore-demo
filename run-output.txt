@@ -1,0 +1,27 @@
+Clean setup verification: CPython 3.13.5, uv 0.8.8; exit code 0.
+Owner commit: d62a9736cd47e4c952ff34622a6257fc79bec257 (draft PR #311).
+The owner's locked setup installed 53 packages into a fresh checkout environment.
+User-site imports and the shared checkout were excluded. The runner removed its temporary store.
+
+ASPIC / grounded semantics. Reviewer modelling assumptions; no treatment recommendation.
+Promoted report: ps:claim:087426305098f54c5adc7c6a3ba6f530767bf6f38ae3c506b240d8287172ed80
+context=att remove=[] {'report': 'accepted', 'inference': 'inactive'}
+  actual inference dependencies: []
+context=target remove=[] {'report': 'accepted', 'inference': 'accepted'}
+  actual inference dependencies: ['ps:claim:087426305098f54c5adc7c6a3ba6f530767bf6f38ae3c506b240d8287172ed80', 'transport_permission']
+context=unrelated remove=[] {'report': 'inactive', 'inference': 'inactive'}
+  actual inference dependencies: []
+context=target remove=['transport_permission'] {'report': 'accepted', 'inference': 'unsupported'}
+  actual inference dependencies: []
+context=target remove=['ps:claim:087426305098f54c5adc7c6a3ba6f530767bf6f38ae3c506b240d8287172ed80'] {'report': 'inactive', 'inference': 'unsupported'}
+  actual inference dependencies: []
+context=target remove=[] {'report': 'accepted', 'inference': 'accepted'}
+  actual inference dependencies: ['ps:claim:087426305098f54c5adc7c6a3ba6f530767bf6f38ae3c506b240d8287172ed80', 'transport_permission']
+Merged reviewer branch: f9329d033f7bd0016091a3301f5afbe5ee2b2de3
+context=target remove=[] {'report': 'accepted', 'inference': 'defeated'}
+  actual inference dependencies: ['ps:claim:087426305098f54c5adc7c6a3ba6f530767bf6f38ae3c506b240d8287172ed80', 'transport_permission']
+context=target remove=['scope_objection'] {'report': 'accepted', 'inference': 'accepted'}
+  actual inference dependencies: ['ps:claim:087426305098f54c5adc7c6a3ba6f530767bf6f38ae3c506b240d8287172ed80', 'transport_permission']
+context=target remove=[] {'report': 'accepted', 'inference': 'defeated'}
+  actual inference dependencies: ['ps:claim:087426305098f54c5adc7c6a3ba6f530767bf6f38ae3c506b240d8287172ed80', 'transport_permission']
+All transitions verified against computed arguments. Original stores were not opened.
