@@ -17,11 +17,10 @@ recommendation.
 
 Prerequisites: Git, Python 3.13 and uv.
 
-The required owner fix is under review in
-[Propstore draft PR #311](https://github.com/propstore/propstore/pull/311).
+The required owner fix was merged in
+[Propstore PR #311](https://github.com/propstore/propstore/pull/311).
 Setup pins the published commit
 [`d62a9736cd47e4c952ff34622a6257fc79bec257`](https://github.com/propstore/propstore/commit/d62a9736cd47e4c952ff34622a6257fc79bec257).
-That fix remains unmerged at this demo's initial publication.
 
 From a parent directory:
 
