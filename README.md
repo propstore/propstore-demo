@@ -17,11 +17,10 @@ recommendation.
 
 Prerequisites: Git, Python 3.13 and uv.
 
-The required owner fix is under review in
-[Propstore draft PR #311](https://github.com/propstore/propstore/pull/311).
+The required owner fix was merged in
+[Propstore PR #311](https://github.com/propstore/propstore/pull/311).
 Setup pins the published commit
 [`d62a9736cd47e4c952ff34622a6257fc79bec257`](https://github.com/propstore/propstore/commit/d62a9736cd47e4c952ff34622a6257fc79bec257).
-That fix remains unmerged at this demo's initial publication.
 
 From a parent directory:
 
@@ -66,3 +65,21 @@ report ID. Git merge commit IDs vary with commit timestamps.
 The example has exactly one challenged inference licence. It does not
 demonstrate generic targeting among multiple licences, migrate the historical
 aspirin corpus or evaluate net clinical benefit.
+
+## Regression verification
+
+After the same locked setup, run:
+
+```powershell
+uv run --no-sync --project propstore python propstore-demo/verify.py
+```
+
+The verifier runs the complete demo twice in separate fresh stores, checks
+deterministic results, then reopens a saved store in a new Python process.
+It verifies that the merged objection persists, hypothetical withdrawal restores
+acceptance, and returning to the stored base restores defeat without changing
+the committed Git state. All stores are disposable; no existing corpus is used.
+
+CI runs this verification against both the published dependency pin and the
+current Propstore master. The pin remains the reproducible setup above; the
+master lane checks compatibility, not a replacement pin or clinical validity.

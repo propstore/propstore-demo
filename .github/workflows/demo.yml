@@ -1,0 +1,36 @@
+name: Demo acceptance
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        core-ref: [d62a9736cd47e4c952ff34622a6257fc79bec257, master]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: demo
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: propstore/propstore
+          ref: ${{ matrix.core-ref }}
+          path: propstore
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+      - name: Install locked runtime dependencies
+        run: uv sync --project propstore --locked --no-dev --python 3.13
+      - name: Record verified core revision
+        run: git -C propstore rev-parse HEAD
+      - name: Verify computed transitions and persistent reopen
+        run: uv run --no-sync --project propstore python demo/verify.py
